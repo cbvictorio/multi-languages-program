@@ -20,5 +20,10 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Print(fileContent)
+	fileContentToArray := ConvertStringToArray(fileContent)
+
+	for _, word := range fileContentToArray {
+		fmt.Printf("The current word is: %s\n", word)
+	}
+
 }

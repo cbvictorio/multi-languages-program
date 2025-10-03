@@ -17,5 +17,6 @@ func ReadContentFromFile(filePath string) (string, error) {
 	if fileContent == "" {
 		return "", errors.New("the file is empty")
 	}
+
 	return fileContent, nil
 }
