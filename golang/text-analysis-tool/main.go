@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -21,9 +22,9 @@ func main() {
 	}
 
 	fileContentToArray := ConvertStringToArray(fileContent)
+	wordsLengthMap := CreateWordsLengthMap(fileContentToArray)
 
-	for _, word := range fileContentToArray {
-		fmt.Printf("The current word is: %s\n", word)
-	}
+	data, _ := json.MarshalIndent(wordsLengthMap, "", "  ")
+	fmt.Println(string(data))
 
 }

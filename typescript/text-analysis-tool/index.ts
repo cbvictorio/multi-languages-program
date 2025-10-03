@@ -1,7 +1,7 @@
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 import { readContentFromFile } from "./file-io";
-import { convertStringToArray } from "./utils";
+import { convertStringToArray, createWordsLengthMap } from "./utils";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,7 +11,10 @@ const filePath = resolve(__dirname, textFileRelativePath);
 async function main() {
   const fileContent = await readContentFromFile(filePath);
   const fileContentToArray = convertStringToArray(fileContent);
-  print(fileContentToArray);
+  const wordsLengthMap = createWordsLengthMap(fileContentToArray);
+
+  print("output:");
+  print(wordsLengthMap);
 }
 
 function print(param: any) {
