@@ -1,7 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+)
 
 func main() {
-	fmt.Print("Hello world from Golang")
+	cwd, err := os.Getwd()
+
+	if err != nil {
+		panic(err)
+	}
+
+	filePath := filepath.Join(cwd, "..", "..", "files", "text_file.txt")
+	fileContent, err := ReadContentFromFile(filePath)
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Print(fileContent)
 }

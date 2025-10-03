@@ -2,7 +2,7 @@
   "compilerOptions": {
     /* Basic Options */
     "target": "ES2022",
-    "module": "NodeNext",
+    "module": "esnext",
     "lib": ["ES2022", "DOM"],
     "outDir": "./dist",
     "rootDir": "./text-analysis-tool",
@@ -18,7 +18,7 @@
     "alwaysStrict": true,
 
     /* Module Resolution Options */
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node",
     "esModuleInterop": true,
 
     /* Advanced Options */
