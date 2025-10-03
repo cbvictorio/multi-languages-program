@@ -4,12 +4,6 @@ import (
 	"strings"
 )
 
-// type WordLengthDictionary = {
-// 	totalCount: number;
-// 	uniqueWordsCount: number;
-// 	words: string[];
-//   };
-
 type WordData struct {
 	TotalCount       int
 	UniqueWordsCount int

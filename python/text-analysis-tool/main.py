@@ -1,6 +1,7 @@
-from file_io import read_content_from_file
-from utils import convert_string_to_array
 import os
+import json
+from file_io import read_content_from_file
+from utils import convert_string_to_array, create_words_length_map, WordData
 
 
 def main():
@@ -8,9 +9,11 @@ def main():
     file_path = os.path.join(script_dir, "../../files/text_file.txt")
     file_content: str = read_content_from_file(file_path)
     file_to_array: list[str] = convert_string_to_array(file_content)
+    words_length_map: dict[int, WordData] = create_words_length_map(file_to_array)
 
     print("output:")
-    print(file_to_array)
+    for key in words_length_map:
+        print({"key": key, "value": words_length_map[key]}, end="\n\n")
 
 
 if __name__ == "__main__":
