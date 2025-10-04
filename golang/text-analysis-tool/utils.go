@@ -1,6 +1,7 @@
 package main
 
 import (
+	"regexp"
 	"strings"
 )
 
@@ -13,7 +14,9 @@ type WordData struct {
 type WordLengthDictionary map[int]WordData
 
 func ConvertStringToArray(str string) []string {
-	array := strings.Fields(str)
+	regex := regexp.MustCompile(`[^a-zA-Z0-9]\s`)
+	noSpaceString := regex.ReplaceAllString(str, " ")
+	array := strings.Fields(noSpaceString)
 	return array
 }
 func contains(slice []string, str string) bool {
@@ -30,7 +33,7 @@ func CreateWordsLengthMap(words []string) WordLengthDictionary {
 
 	for _, word := range words {
 		var newTotalCount int = 1
-		var currentUniqueWords []string
+		var currentUniqueWords []string = []string{word}
 
 		wordLength := len(word)
 		value, exists := wordLengthDictionary[wordLength]
@@ -42,8 +45,6 @@ func CreateWordsLengthMap(words []string) WordLengthDictionary {
 			if !contains(currentUniqueWords, word) {
 				currentUniqueWords = append(currentUniqueWords, word)
 			}
-		} else {
-			currentUniqueWords = []string{word}
 		}
 
 		wordLengthDictionary[wordLength] = WordData{

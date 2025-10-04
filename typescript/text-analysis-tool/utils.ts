@@ -1,5 +1,11 @@
 export function convertStringToArray(str: string): string[] {
-  return str.split(" ");
+  return str
+    .replace(/—/g, "-") // Normalize em-dash to hyphen
+    .replace(/['"`,;:!?]/g, "")
+    .replace(/[.\n\r]/g, " ")
+    .replace(/[^a-zA-Z0-9\s-]/g, " ")
+    .split(/\s+/)
+    .filter((word) => word.length > 0);
 }
 
 type WordLengthDictionary = {

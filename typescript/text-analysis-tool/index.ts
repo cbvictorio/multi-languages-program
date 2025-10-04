@@ -13,7 +13,7 @@ async function main() {
   const fileContentToArray = convertStringToArray(fileContent);
   const wordsLengthMap = createWordsLengthMap(fileContentToArray);
 
-  print("output:");
+  print("\noutput:");
   print(wordsLengthMap);
 }
 
