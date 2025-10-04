@@ -1,6 +1,10 @@
-export function convertStringToArray(str: string): string[] {
-  return str
-    .replace(/—/g, "-") // Normalize em-dash to hyphen
+/* 
+  Comments for this function can be found in the Go script
+  for the same module's name
+*/
+export function ConvertTextToArray(text: string): string[] {
+  return text
+    .replace(/—/g, "-")
     .replace(/['"`,;:!?]/g, "")
     .replace(/[.\n\r]/g, " ")
     .replace(/[^a-zA-Z0-9\s-]/g, " ")

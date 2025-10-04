@@ -21,7 +21,7 @@ func main() {
 		panic(err)
 	}
 
-	fileContentToArray := ConvertStringToArray(fileContent)
+	fileContentToArray := ConvertTextToArray(fileContent)
 	wordsLengthMap := CreateWordsLengthMap(fileContentToArray)
 
 	data, _ := json.MarshalIndent(wordsLengthMap, "", "  ")

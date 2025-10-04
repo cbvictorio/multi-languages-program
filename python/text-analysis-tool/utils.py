@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import re
 
 
 @dataclass
@@ -8,8 +9,25 @@ class WordData:
     unique_words_count: int
 
 
-def convert_string_to_array(string: str) -> list[str]:
-    return string.split()
+# Comments for this function can be found in the Go script
+# for the same module's name
+def convert_text_to_array(text: str) -> list[str]:
+    # Normalize em-dash
+    text = text.replace("—", "-")
+
+    # Remove quotes and punctuation
+    text = re.sub(r"['\"`,;:!?]", "", text)
+
+    # Replace dots and line breaks with space
+    text = re.sub(r"[.\n\r]", " ", text)
+
+    # Replace special chars with space (keep alphanumeric, spaces, hyphens)
+    text = re.sub(r"[^a-zA-Z0-9\s-]", " ", text)
+
+    # Split on whitespace and filter empty strings
+    words = text.split()
+
+    return words
 
 
 def create_words_length_map(words: list[str]) -> dict[int, int]:

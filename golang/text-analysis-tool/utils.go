@@ -13,12 +13,38 @@ type WordData struct {
 
 type WordLengthDictionary map[int]WordData
 
-func ConvertStringToArray(str string) []string {
-	regex := regexp.MustCompile(`[^a-zA-Z0-9]\s`)
-	noSpaceString := regex.ReplaceAllString(str, " ")
-	array := strings.Fields(noSpaceString)
-	return array
+/*
+Some characters must be replaced, others should be deleted.
+
+	firstRegex ->
+		Removes quotes, backticks, commas, semicolons, colons,
+		exclamation marks, and question marks.
+
+	secondRegex ->
+		Replaces dots, newlines (\n), and carriage returns (\r) with spaces.
+
+	thirdRegex ->
+		Replaces any remaining special characters
+		(anything not alphanumeric, space, or hyphen)
+		with spaces.
+*/
+func ConvertTextToArray(str string) []string {
+	str = strings.ReplaceAll(str, "—", "-")
+
+	firstRegex := regexp.MustCompile(`['"\x60,;:!?]`)
+	str = firstRegex.ReplaceAllString(str, "")
+
+	secondRegex := regexp.MustCompile(`[.\n\r]`)
+	str = secondRegex.ReplaceAllString(str, " ")
+
+	thirdRegex := regexp.MustCompile(`[^a-zA-Z0-9\s-]`)
+	str = thirdRegex.ReplaceAllString(str, " ")
+
+	words := strings.Fields(str)
+
+	return words
 }
+
 func contains(slice []string, str string) bool {
 	for _, v := range slice {
 		if strings.EqualFold(v, str) {
