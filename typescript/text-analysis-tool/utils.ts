@@ -2,7 +2,7 @@
   Comments for this function can be found in the Go script
   for the same module's name
 */
-export function ConvertTextToArray(text: string): string[] {
+export function convertTextToArray(text: string): string[] {
   return text
     .replace(/—/g, "-")
     .replace(/['"`,;:!?]/g, "")
@@ -46,4 +46,22 @@ export function createWordsLengthMap(
   }
 
   return wordsMap;
+}
+
+export function createWordsDictionary(words: string[]): Record<string, number> {
+  const wordsDictionary: Record<string, number> = {};
+
+  for (const word of words) {
+    const dictionaryKey = word.toLowerCase();
+    const currentValue = wordsDictionary[dictionaryKey];
+    let length = 1;
+
+    if (currentValue) {
+      length = currentValue + 1;
+    }
+
+    wordsDictionary[dictionaryKey] = length;
+  }
+
+  return wordsDictionary;
 }

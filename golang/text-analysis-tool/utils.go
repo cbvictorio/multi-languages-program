@@ -54,6 +54,25 @@ func contains(slice []string, str string) bool {
 	return false
 }
 
+func CreateWordsDictionary(words []string) map[string]int {
+	wordsDictionary := make(map[string]int)
+
+	for _, word := range words {
+		dictionaryKey := strings.ToLower(word)
+		wordCount, exists := wordsDictionary[dictionaryKey]
+
+		if exists {
+			wordCount = wordCount + 1
+		} else {
+			wordCount = 1
+		}
+
+		wordsDictionary[dictionaryKey] = wordCount
+	}
+
+	return wordsDictionary
+}
+
 func CreateWordsLengthMap(words []string) WordLengthDictionary {
 	wordLengthDictionary := make(WordLengthDictionary)
 

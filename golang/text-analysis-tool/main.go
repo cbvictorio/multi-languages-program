@@ -22,9 +22,18 @@ func main() {
 	}
 
 	fileContentToArray := ConvertTextToArray(fileContent)
+	wordsDictionary := CreateWordsDictionary(fileContentToArray)
 	wordsLengthMap := CreateWordsLengthMap(fileContentToArray)
 
-	data, _ := json.MarshalIndent(wordsLengthMap, "", "  ")
-	fmt.Println(string(data))
+	flag := false
+
+	if flag {
+		data, _ := json.MarshalIndent(wordsLengthMap, "", "  ")
+		fmt.Println(string(data))
+	} else {
+		for key, value := range wordsDictionary {
+			fmt.Printf("(%s) => %d\n", key, value)
+		}
+	}
 
 }

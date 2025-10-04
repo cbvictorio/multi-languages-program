@@ -49,3 +49,19 @@ def create_words_length_map(words: list[str]) -> dict[int, int]:
         words_length_map[word_length] = word_data
 
     return words_length_map
+
+
+def create_words_dictionary(words: list[str]) -> dict[str, int]:
+    words_dictionary: dict[str, int] = {}
+
+    for word in words:
+        dictionary_key: str = word.lower()
+        current_value: int = words_dictionary.get(dictionary_key)
+        length: int = 1
+
+        if current_value is not None:
+            length = current_value + 1
+
+        words_dictionary[dictionary_key] = length
+
+    return words_dictionary
