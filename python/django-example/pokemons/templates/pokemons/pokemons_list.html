@@ -11,6 +11,16 @@
       {% for pokemon in pokemons_list %}
       <li><b> ID: {{ pokemon.id }} - <b>{{ pokemon.name }}</li>
       {% endfor %}
+      <p> serializer value: </p>
+      <div> {{serialized_charizard}} </div>
+      <hr />
+      <p> serializer is valid: </p>
+      <div> {{is_valid_serialized_charizard}} </div>
+      <hr />
+      <p> serializer_errors: </p>
+      <div> {{serializer_errors}} </div>
+      <hr />
+      simon
     </ul>
   </body>
 </html>
