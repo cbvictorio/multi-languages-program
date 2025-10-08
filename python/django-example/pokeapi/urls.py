@@ -16,10 +16,11 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from pokemons.views import get_all_pokemons
+from django.urls import path, include
+
+# project urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("pokemons/", get_all_pokemons),
+    path("api/pokemons/", include("pokemons.urls")),
 ]

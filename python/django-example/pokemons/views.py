@@ -1,32 +1,32 @@
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
+from django.db.models import ObjectDoesNotExist
+from rest_framework import status
 from pokemons.models import Pokemon
-from pokemons.serializers import PokemonSerializer
+from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
+from pokemons.serializers import PokemonSerializer
+from rest_framework.decorators import api_view, permission_classes
 
 
 @api_view(["GET"])
 @permission_classes([AllowAny])
 def get_all_pokemons(request):
     pokemons_list_data = Pokemon.objects.all()
-    charizard_data = Pokemon.objects.get(id=2)
-
     pokemons_list_serializer = PokemonSerializer(pokemons_list_data, many=True)
-    charizard_data_serializer = PokemonSerializer(charizard_data)
-
-    response = {
-        "status": 200,
-        "ok": True,
-        "error": False,
-        "list": pokemons_list_serializer.data,
-        "entity": charizard_data_serializer.data,
-    }
+    response = {"status": 200, "ok": True, "data": pokemons_list_serializer.data}
 
     return Response(response)
 
 
-@api_view(["POST"])
+@api_view(["GET"])
 @permission_classes([AllowAny])
-def create_initial_pokemon_data(request):
-    pokemons_list = []
-    return Response(pokemons_list)
+def get_pokemon_by_id(request, id):
+    try:
+        pokemon_data = Pokemon.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return Response(
+            {"message": f"pokemon with id: {id} was not found"},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+
+    serializer = PokemonSerializer(pokemon_data)
+    return Response({"ok": True, "data": serializer.data})
