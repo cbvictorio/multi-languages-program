@@ -6,13 +6,12 @@
       "type": "shell",
       "command": "CompileDaemon",
       "args": [
-        "-command=./gin-example",
-        // "-directory=."
-        // "-build=go build -o gin-example .",
-        // "-pattern=(.+\\.go)$",
-        "-color=true"
-        // "-graceful-kill=true",
-        // "-log-prefix=false"
+        "-directory=.",
+        "-build=go build -o bin/gin-example .",
+        "-command=./bin/gin-example",
+        "-pattern=(.+\\.go)$",
+        "-color=true",
+        "-graceful-kill=true"
       ],
       "options": {
         "cwd": "${workspaceFolder}/golang/gin-example"
