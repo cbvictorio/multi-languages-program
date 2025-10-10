@@ -52,14 +52,12 @@ func (userController *UserController) SignUp(context *gin.Context) {
 
 		context.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"error": errorMessage,
-			"exc":   result.Error.Error(),
 		})
 
 		return
 	}
 
-	context.JSON(http.StatusOK, gin.H{
-		"message": "user created successfully",
-		"userId":  user.ID,
+	context.JSON(http.StatusCreated, gin.H{
+		"userId": user.ID,
 	})
 }
