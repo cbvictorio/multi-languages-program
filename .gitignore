@@ -7,6 +7,9 @@ node_modules/
 # TypeScript
 dist/
 
+# VSCode folder
+.vscode/
+
 # Python
 **/__pycache__/
 *.pyc
