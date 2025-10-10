@@ -30,7 +30,6 @@ func (userController *UserController) SignUp(context *gin.Context) {
 		Name  string
 		Email string
 	}
-
 	context.Bind(&body)
 
 	user := models.User{
@@ -42,7 +41,6 @@ func (userController *UserController) SignUp(context *gin.Context) {
 	}
 
 	result := userService.CreateUser(user)
-
 	if result.Error != nil {
 		errorMessage := "There was an error, please try again later"
 
