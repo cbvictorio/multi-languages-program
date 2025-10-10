@@ -17,7 +17,7 @@ func main() {
 
 	userController := controllers.CreateUserController()
 
-	router.GET("/signup", userController.SignUp)
+	router.POST("/signup", userController.SignUp)
 
 	router.Run()
 }

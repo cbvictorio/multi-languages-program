@@ -13,7 +13,7 @@ var DB *gorm.DB
 
 func ConnectToDatabase() {
 	dsn := os.Getenv("DB_URL")
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{TranslateError: true})
 
 	if err != nil {
 		log.Fatal("database connection was not posible")
@@ -21,14 +21,6 @@ func ConnectToDatabase() {
 
 	DB = db
 
-	// process to create the custom user_type ENUM for postgres
-	db.Exec(`
-        DO $$ BEGIN
-            CREATE TYPE user_role AS ENUM ('admin', 'customer', 'vendor');
-        EXCEPTION
-            WHEN duplicate_object THEN null;
-        END $$;
-    `)
-
+	db.Migrator().DropTable(&models.User{})
 	db.AutoMigrate(&models.User{})
 }
