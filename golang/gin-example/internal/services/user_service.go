@@ -2,6 +2,7 @@ package services
 
 import (
 	"errors"
+	"fmt"
 	"gin-example/internal/initializers"
 	"gin-example/internal/models"
 
@@ -40,9 +41,20 @@ func (userService *UserService) GetAllUsers(user models.User) ([]models.User, er
 	result := initializers.DB.Find(&user)
 
 	if result.Error != nil {
-		errorMsg := "There was an error retrieving all users"
-		return nil, errors.New(errorMsg)
+		return nil, errors.New("there was an error retrieving all users")
 	}
 
 	return users, nil
+}
+
+func (userService *UserService) GetUserByEmail(email string) (*models.User, error) {
+	var user models.User
+	result := initializers.DB.Where(&models.User{Email: email}).Find(&user)
+	userNotFoundError := fmt.Sprintf("there was an error retrieving the user with email: %s", email)
+
+	if result.Error != nil {
+		return nil, errors.New(userNotFoundError)
+	}
+
+	return &user, nil
 }

@@ -2,42 +2,6 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run CompileDaemon",
-      "type": "shell",
-      "command": "CompileDaemon",
-      "args": [
-        "-directory=.",
-        "-build=go build -o bin/gin-example .",
-        "-command=./bin/gin-example",
-        "-pattern=(.+\\.go)$",
-        "-color=true",
-        "-graceful-kill=true"
-      ],
-      "options": {
-        "cwd": "${workspaceFolder}/golang/gin-example/cmd/gin-example"
-      },
-      "isBackground": true,
-      "problemMatcher": {
-        "pattern": {
-          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-          "file": 1,
-          "line": 2,
-          "column": 3,
-          "severity": 4,
-          "message": 5
-        },
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": "Running build command!",
-          "endsPattern": "Restarting the given command."
-        }
-      },
-      "presentation": {
-        "reveal": "always",
-        "panel": "dedicated"
-      }
-    },
-    {
       "label": "Golang Migration Script",
       "type": "shell",
       "command": "go",
@@ -51,12 +15,41 @@
       },
       "problemMatcher": []
     }
+    // {
+    //   "label": "Run CompileDaemon",
+    //   "type": "shell",
+    //   "command": "CompileDaemon -directory=. -build='go build -o bin/gin-example .' -command=./bin/gin-example -pattern='(.+\\.go)$' -color=true -graceful-kill=true",
+    //   "args": [],
+    //   "options": {
+    //     "cwd": "${workspaceFolder}/golang/gin-example/cmd/gin-example"
+    //   },
+    //   "isBackground": true,
+    //   "problemMatcher": {
+    //     "pattern": {
+    //       "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+    //       "file": 1,
+    //       "line": 2,
+    //       "column": 3,
+    //       "severity": 4,
+    //       "message": 5
+    //     },
+    //     "background": {
+    //       "activeOnStart": true,
+    //       "beginsPattern": "Running build command!",
+    //       "endsPattern": "Restarting the given command."
+    //     }
+    //   },
+    //   "presentation": {
+    //     "reveal": "always",
+    //     "panel": "dedicated"
+    //   }
+    // }
   ],
   "inputs": [
     {
       "id": "goFilepath",
       "type": "promptString",
-      "description": "Name of the Golang migratio script to execute",
+      "description": "Name of the Golang migration script to execute",
       "default": "users_table.go"
     }
   ]

@@ -23,6 +23,7 @@ func main() {
 	userHandler := handlers.NewUserHandler()
 
 	router.POST("/signup", userHandler.SignUp)
+	router.POST("/login", userHandler.Login)
 
 	router.Run()
 }
