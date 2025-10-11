@@ -14,7 +14,7 @@
         "-graceful-kill=true"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/golang/gin-example"
+        "cwd": "${workspaceFolder}/golang/gin-example/cmd/gin-example"
       },
       "isBackground": true,
       "problemMatcher": {
@@ -36,6 +36,28 @@
         "reveal": "always",
         "panel": "dedicated"
       }
+    },
+    {
+      "label": "Golang Migration Script",
+      "type": "shell",
+      "command": "go",
+      "args": ["run", "${input:goFilepath}"],
+      "options": {
+        "cwd": "${workspaceFolder}/golang/gin-example/migrations"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "goFilepath",
+      "type": "promptString",
+      "description": "Name of the Golang migratio script to execute",
+      "default": "users_table.go"
     }
   ]
 }

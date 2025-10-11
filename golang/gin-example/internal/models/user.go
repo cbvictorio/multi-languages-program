@@ -18,5 +18,6 @@ type User struct {
 	UpdatedAt *time.Time `json:"updated_at" gorm:"column:updated_at;autoUpdateTime:false"`
 	Name      string     `json:"name"`
 	Email     string     `json:"email" gorm:"unique"`
+	Password  string     `json:"password"`
 	Role      UserRole   `json:"role" gorm:"type:user_role"`
 }

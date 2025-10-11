@@ -1,7 +1,7 @@
 package initializers
 
 import (
-	"gin-example/models"
+	"gin-example/internal/models"
 	"log"
 	"os"
 
@@ -21,6 +21,5 @@ func ConnectToDatabase() {
 
 	DB = db
 
-	db.Migrator().DropTable(&models.User{})
 	db.AutoMigrate(&models.User{})
 }

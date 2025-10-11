@@ -15,7 +15,7 @@
       "type": "go",
       "request": "launch",
       "mode": "auto",
-      "program": "${workspaceFolder}/golang/gin-example",
+      "program": "${workspaceFolder}/golang/gin-example/cmd/gin-example",
       "console": "integratedTerminal"
     }
   ]
