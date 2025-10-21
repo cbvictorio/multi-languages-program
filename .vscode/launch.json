@@ -25,6 +25,14 @@
       "mode": "auto",
       "program": "${workspaceFolder}/golang/random-exercises/roman_to_integer.go",
       "console": "integratedTerminal"
+    },
+    {
+      "name": "Golang Data Structures",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/golang/data-structures/main.go",
+      "console": "integratedTerminal"
     }
   ]
 }
