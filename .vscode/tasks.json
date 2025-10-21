@@ -14,6 +14,20 @@
         "isDefault": true
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Golang Random Exercise Script",
+      "type": "shell",
+      "command": "go",
+      "args": ["run", "${input:goFileExercisePath}"],
+      "options": {
+        "cwd": "${workspaceFolder}/golang/random-exercises"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
     }
     // {
     //   "label": "Run CompileDaemon",
@@ -51,6 +65,12 @@
       "type": "promptString",
       "description": "Name of the Golang migration script to execute",
       "default": "users_table.go"
+    },
+    {
+      "id": "goFileExercisePath",
+      "type": "promptString",
+      "description": "Name of the Golang Exercise script to execute",
+      "default": "roman_to_integer.go"
     }
   ]
 }
