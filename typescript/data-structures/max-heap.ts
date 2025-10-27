@@ -57,7 +57,8 @@ export class MaxHeap {
 
     if (leftChildValue && leftChildValue > nodeValue) {
       this.swapElements(nodeIndex, leftChildIndex);
-      return this.heapifyDown(leftChildIndex);
+      this.heapifyDown(leftChildIndex);
+      return;
     }
 
     if (rightChildValue && rightChildValue > nodeValue) {

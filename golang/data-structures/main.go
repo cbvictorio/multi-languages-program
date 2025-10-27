@@ -1,30 +1,24 @@
 package main
 
 import (
-	linkedlists "datastructures/linked-lists"
+	"datastructures/heaps"
+	"fmt"
 )
 
-type PrintInfo struct {
-	IsEmpty bool
-}
-
 func main() {
-	singlyL1 := linkedlists.NewSinglyLinkedList()
-	singlyL2 := linkedlists.NewSinglyLinkedList()
+	maxHeap := heaps.NewMaxHeap()
+	maxHeap.Insert(5)
+	maxHeap.Insert(12)
+	maxHeap.Insert(64)
+	maxHeap.Insert(1)
+	maxHeap.Insert(37)
+	maxHeap.Insert(90)
+	maxHeap.Insert(91)
+	maxHeap.Insert(97)
 
-	singlyL1.Append(9)
-	singlyL1.Append(9)
-	singlyL1.Append(9)
-	singlyL1.Append(9)
-	singlyL1.Append(9)
-	singlyL1.Append(9)
-	singlyL1.Append(9)
+	maxHeap.PrintValues()
 
-	singlyL2.Append(9)
-	singlyL2.Append(9)
-	singlyL2.Append(9)
-	singlyL2.Append(9)
-
-	mergedList := linkedlists.AddTwoNumbers(singlyL1, singlyL2)
-	mergedList.Display()
+	maxHeapValue := maxHeap.ExtractMax()
+	fmt.Printf("the deleted value was: %d", maxHeapValue)
+	maxHeap.PrintValues()
 }

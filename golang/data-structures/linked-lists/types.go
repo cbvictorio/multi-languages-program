@@ -5,11 +5,6 @@ type Node struct {
 	Next  *Node
 }
 
-type NodeActions interface {
-	GetNext() *Node
-	SetNext()
-}
-
 type LinkedList interface {
 	Insert(data int)
 	Append(data int)
