@@ -1,9 +1,9 @@
 package heaps
 
 type Heap interface {
-	GetLeftChild() int
-	GetRightChild() int
-	GetParent() int
+	GetLeftChild(index int) int
+	GetRightChild(index int) int
+	GetParent(index int) int
 	IsEmpty() bool
 	Insert(n int)
 	ExtractMax() int

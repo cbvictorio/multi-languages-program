@@ -121,7 +121,7 @@ func (heap *MaxHeap) heapifyDown(index int) {
 func (heap *MaxHeap) Insert(number int) {
 	heap.array = append(heap.array, number)
 
-	if heap.Size() <= 1 {
+	if heap.Size() < 2 {
 		return
 	}
 
